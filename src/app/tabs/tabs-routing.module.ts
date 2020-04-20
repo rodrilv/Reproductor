@@ -4,6 +4,28 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
+    path: 'login',
+  children: [
+    {
+      path: '',
+      loadChildren: () =>
+        import('../login/login.module').then(m => m.LoginPageModule)
+    }
+  ]
+
+  },
+  {
+    path: 'registrarse',
+  children: [
+    {
+      path: '',
+      loadChildren: () =>
+        import('../registrarusuzario/registrarusuzario.module').then(m => m.RegistrarusuzarioPageModule)
+    }
+  ]
+
+  },
+  {
     path: 'tabs',
     component: TabsPage,
     children: [
@@ -38,15 +60,25 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'canciones',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../canciones/canciones.module').then(m => m.CancionesPageModule)
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/tab2',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/login',
     pathMatch: 'full'
   }
 ];

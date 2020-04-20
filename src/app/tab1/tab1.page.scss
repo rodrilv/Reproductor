@@ -1,3 +1,13 @@
 ion-content ion-toolbar {
-  --background: translucent;
+    --background: translucent;
+}
+
+audio {
+    margin-left: 30px;
+}
+
+.canciones {
+    height: 350px;
+    overflow: scroll;
+    margin-right: 10px;
 }

@@ -1,0 +1,32 @@
+<ion-content>
+    <div class="body">
+        <p>LOGIN</p>
+        <div>
+            <ion-img src="../assets/user2.png"></ion-img>
+
+            <ion-item>
+                <ion-label>
+                    <ion-icon name="person-outline"></ion-icon>
+                </ion-label>
+                <ion-input placeholder="Usuario" required value="{{usuario}}" [(ngModel)]="usuario"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-icon name="key-outline"></ion-icon>
+                </ion-label>
+                <ion-input placeholder="Contraseña" id="contraseña" type="password" value="{{password}}" [(ngModel)]="password"></ion-input>
+            </ion-item>
+            <!--
+      <ion-item class="tog">
+          <ion-label class="contra">Mostrar Contraseña</ion-label>
+          <ion-toggle color="primary" [(ngModel)]="mostrarContrasena" (click)="mostrarcon()"></ion-toggle>
+      </ion-item>-->
+            <ion-button (click)='Logear()'>Ingresar</ion-button>
+            <br>
+            <a (click)='redirect()' routerLinkActive='router-link-active'>Registrarse</a>
+
+        </div>
+    </div>
+</ion-content>
+
+//ionic g c components/myComponent --export
