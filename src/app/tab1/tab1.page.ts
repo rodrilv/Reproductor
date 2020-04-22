@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Tab1Page implements OnInit{ 
   direccionAudio: string;
-  canciones: Array<any>;
+  canciones: any;
 
   constructor( private httpClient: HttpClient) {
     this.direccionAudio = '';
@@ -40,8 +40,29 @@ ObtenerCanciones(){
       );
 
 }
+obtenerCanciones(): Promise<any> {
+  return new Promise((resolve, reject) => {
+    this.httpClient.post('http://localhost:3000/cancion/consultar',{ }).subscribe(res => {
+      console.log('respuesta', res);
+      this.canciones = res;
+      console.log(this.canciones);
+      resolve();
+    }, err => {
+      console.log('error', err);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error al Obtener Canciones',
+        text: err.error.err.message,
+        showConfirmButton: true         
+      });
+      reject();
+    });
+  })
+}
 
 CambiarAudio(cancion, titulo, artista){
+  console.log(cancion);
   this.direccionAudio = cancion;
   document.getElementById('titulo').innerHTML = titulo;
   document.getElementById('artista').innerHTML = artista;
@@ -49,6 +70,7 @@ CambiarAudio(cancion, titulo, artista){
 }
 
 ngOnInit() {
-  this.ObtenerCanciones();
+  //his.ObtenerCanciones();
+this.obtenerCanciones();
 }
 }

@@ -10,7 +10,7 @@
 
 
     <div class="canciones">
-        <ion-list *ngFor="let cancion of canciones[0].canciones; let i = index" (click)='CambiarAudio(cancion.url,cancion.titulo,cancion.artista)'>
+        <ion-list *ngFor="let cancion of canciones.canciones; let i = index" (click)='CambiarAudio(cancion.url,cancion.titulo,cancion.artista)'>
             <ion-item>
                 <ion-avatar slot="start">
                     <ion-icon name="musical-notes"></ion-icon>

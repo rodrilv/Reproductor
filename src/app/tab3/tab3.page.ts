@@ -10,7 +10,7 @@ import { Router, NavigationExtras} from '@angular/router';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
-  usuarios: Array<any>;
+  usuarios: any;
   nuevoRole:string;
   constructor(private httpClient: HttpClient,private router: Router, public UsuarioLogeado: UsuariologeadoService) {
     this.usuarios= [];
@@ -42,6 +42,27 @@ export class Tab3Page implements OnInit {
       );
 }
 
+obtenerCanciones(): Promise<any> {
+  return new Promise((resolve, reject) => {
+    this.httpClient.post('http://localhost:3000/usuario/consultar',{ }).subscribe(res => {
+      console.log('respuesta', res);
+      this.usuarios = res;
+      console.log(this.usuarios);
+      resolve();
+    }, err => {
+      console.log('error', err);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error al Obtener Canciones',
+        text: err.error.err.message,
+        showConfirmButton: true         
+      });
+      reject();
+    });
+  })
+}
+
 ActualizarUsuario(id,nombre) {
   console.log(id);
   console.log(nombre);
@@ -67,7 +88,8 @@ ActualizarUsuario(id,nombre) {
   });
 }
 ngOnInit() {
-  this.MostrarUsuarios();
+  //this.MostrarUsuarios();
+  this.obtenerCanciones();
 }
 
 

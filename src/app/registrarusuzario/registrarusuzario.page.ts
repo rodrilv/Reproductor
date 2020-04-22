@@ -43,7 +43,7 @@ export class RegistrarusuzarioPage implements OnInit {
             text: this.nombre + 'Ha sido registrado con exito\n Bienvenido a tu Reproductor Favorito',
             showConfirmButton: true  
           });
-          this.router.navigate(['tabs', 'tab1' ]);
+          this.router.navigate(['tabs', 'tab2' ]);
 
         },
         (err) => {
