@@ -21,7 +21,7 @@ constructor(private httpClient: HttpClient, private browser: InAppBrowser){
 
 
 guardarCancion(){
-  this.url = 'https://proyectodbdr.000webhostapp.com/archivos_music/' + this.nombreArchivo;
+  this.url = 'https://proyectodbdr.000webhostapp.com/archivos_music/' + this.titulo + '.mp3';
 
   return this.httpClient.post('http://localhost:3000/cancion/registrar', 
   { titulo: this.titulo,
@@ -39,7 +39,7 @@ guardarCancion(){
             text: this.titulo + 'Ha sido registrada con exito',
             showConfirmButton: true  
           });
-
+          this.titulo = this.artista = this.duracion = '';
         },
         (err) => {
           console.log(err);

@@ -40,11 +40,11 @@ export class RegistrarusuzarioPage implements OnInit {
             position: 'center',
             icon: 'success',
             title: 'Exito!',
-            text: this.nombre + 'Ha sido registrado con exito\n Bienvenido a tu Reproductor Favorito',
+            text: this.nombre + ' Ha sido registrado con exito\n Bienvenido a tu Reproductor Favorito',
             showConfirmButton: true  
           });
-          this.router.navigate(['tabs', 'tab2' ]);
-
+          this.router.navigate(['login' ]);
+          this.nombre = this.apellidos = this.email =  this.password = '';
         },
         (err) => {
           console.log(err);

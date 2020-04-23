@@ -18,13 +18,11 @@
         <ion-label position="floating">Duracion</ion-label>
         <ion-input [(ngModel)]="duracion"></ion-input>
     </ion-item>
-    <ion-item>
 
-        <ion-input [(ngModel)]="nombreArchivo" placeholder="Nombre del Archivo Ejem: Cancion.mp3"></ion-input>
-    </ion-item>
-
-
-    <ion-button (click)='openHost()'>Cargar Cancion</ion-button>
-
+    <br>
+    <ion-button (click)='openHost()'>Cargar Cancion '
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+    </ion-button>
+    <br>
     <ion-button (click)="guardarCancion()"> Guardar</ion-button>
 </ion-content>

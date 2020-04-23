@@ -33,7 +33,7 @@ export class UsuariologeadoService {
             title: 'Bienvenido',
             showConfirmButton: true,          
           });
-          this.router.navigate(['tabs', 'tab2' ]);
+          this.router.navigate(['tabs', 'tab1' ]);
 
         },
         (err) => {
@@ -51,6 +51,29 @@ export class UsuariologeadoService {
 
       );
 }
+
+obtenerCanciones(): Promise<any> {
+  return new Promise((resolve, reject) => {
+    this.httpClient.post('http://localhost:3000/usuario/consultar',{ }).subscribe(res => {
+      console.log('respuesta', res);
+      this.usuarios = res;
+      console.log(this.usuarios);
+      resolve();
+    }, err => {
+      console.log('error', err);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error al Obtener Canciones',
+        text: err.error.err.message,
+        showConfirmButton: true         
+      });
+      reject();
+    });
+  })
+}
+
+
 ActualizarRole(id, role) {
   return this.httpClient.put('http://localhost:3000/usuario/actualizar', {
     id,
